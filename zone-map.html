@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zone d'intervention — SAS Schoeffter</title>
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<style>
+  html, body { margin: 0; height: 100%; background: #FAF4EC; font-family: Archivo, Helvetica, Arial, sans-serif; }
+  #map { width: 100%; height: 100%; display: block; }
+  text { paint-order: stroke; stroke: #FAF4EC; stroke-width: 3px; stroke-linejoin: round; }
+</style>
+</head>
+<body>
+<svg id="map" role="img" aria-label="Carte de la zone d'intervention de la SAS Schoeffter : Moselle, Meurthe-et-Moselle et Luxembourg"></svg>
+<script>
+const cities = [
+  { n: "Luxembourg", c: [6.13, 49.61], big: true },
+  { n: "Thionville", c: [6.17, 49.36], off: -1 },
+  { n: "Metz", c: [6.176, 49.119], hq: true },
+  { n: "Sarreguemines", c: [7.07, 49.11] },
+  { n: "Nancy", c: [6.184, 48.692], big: true },
+  { n: "Sarrebourg", c: [7.05, 48.73] }
+];
+const zones = [
+  { n: "Luxembourg", c: [6.10, 49.72], r: 0.30, l: [6.10, 50.02] },
+  { n: "Moselle", c: [6.65, 49.08], r: 0.52, l: [7.05, 49.45] },
+  { n: "Meurthe-et-Moselle", c: [6.20, 48.62], r: 0.46, l: [6.20, 48.28] }
+];
+const svg = d3.select("#map");
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json").then(topo => {
+  const land = topojson.feature(topo, topo.objects.countries);
+  function draw() {
+    const w = document.body.clientWidth, h = document.body.clientHeight;
+    svg.attr("viewBox", [0, 0, w, h]).selectAll("*").remove();
+    const lonSpan = 4.6, latSpan = 3.1;
+    const k = Math.min((w - 16) / lonSpan, (h - 16) / latSpan) * (180 / Math.PI);
+    const proj = d3.geoMercator().center([6.35, 49.18]).scale(k).translate([w / 2, h / 2]);
+    const path = d3.geoPath(proj);
+    svg.append("g").selectAll("path").data(land.features).join("path")
+      .attr("d", path).attr("fill", "#EBE1D1").attr("stroke", "#FFFFFF").attr("stroke-width", 1.6);
+    const circle = d3.geoCircle();
+    svg.append("g").selectAll("path").data(zones).join("path")
+      .attr("d", d => path(circle.center(d.c).radius(d.r)()))
+      .attr("fill", "rgba(42,70,224,0.15)").attr("stroke", "#2A46E0").attr("stroke-width", 1.4);
+    const g = svg.append("g");
+    g.selectAll("circle").data(cities).join("circle")
+      .attr("cx", d => proj(d.c)[0]).attr("cy", d => proj(d.c)[1])
+      .attr("r", d => d.hq ? 7 : 4)
+      .attr("fill", d => d.hq ? "#E31E24" : "#2A46E0")
+      .attr("stroke", "#FFFFFF").attr("stroke-width", d => d.hq ? 2.5 : 1.5);
+    g.selectAll("text").data(cities).join("text")
+      .attr("x", d => proj(d.c)[0] + (d.off ? -10 : d.hq ? 12 : 9)).attr("y", d => proj(d.c)[1] + 4).attr("text-anchor", d => d.off ? "end" : "start")
+      .attr("font-size", d => d.hq ? 15 : d.big ? 13 : 12)
+      .attr("font-weight", d => d.hq ? 800 : 600)
+      .attr("fill", "#333333").text(d => d.n);
+    svg.append("g").selectAll("text").data(zones).join("text")
+      .attr("x", d => proj(d.l)[0]).attr("y", d => proj(d.l)[1])
+      .attr("text-anchor", "middle").attr("font-size", 11).attr("font-weight", 800)
+      .attr("letter-spacing", "0.08em").attr("fill", "#2A46E0")
+      .text(d => d.n.toUpperCase());
+  }
+  draw();
+  window.addEventListener("resize", draw);
+});
+</script>
+</body>
+</html>
