@@ -192,11 +192,10 @@
       <nav class="site-nav" aria-label="Navigation principale">
         <a href="#prestations">Prestations</a>
         <a href="#realisations">Réalisations</a>
-        <a href="#blog">Conseils</a>
         <a href="#avis">Avis</a>
+        <a href="#blog">Conseils</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="header-tel" href="tel:+33354730645" aria-label="Appeler le 03 54 73 06 45" style="display:inline-flex;align-items:center;font-weight:800;font-size:clamp(12px,2.2vw,17px);color:#333333;padding:9px 0;border-radius:10px;white-space:nowrap;flex:none">03 54 73 06 45</a>
       <a class="header-devis" href="#contact" style="font-weight:800;font-size:clamp(12px,2.2vw,17px);color:#FFFFFF;background:#2A46E0;padding:10px clamp(10px,1.6vw,18px);border-radius:10px;box-shadow:0 8px 18px rgba(42,70,224,0.25);white-space:nowrap;flex:none">Devis gratuit</a>
       <button type="button" class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
@@ -205,11 +204,10 @@
     <nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobile" hidden>
       <a href="#prestations">Prestations</a>
       <a href="#realisations">Réalisations</a>
-      <a href="#blog">Conseils</a>
       <a href="#avis">Avis clients</a>
       <a href="#zone">Zone d'intervention</a>
+      <a href="#blog">Conseils</a>
       <a href="#faq">FAQ</a>
-      <a href="tel:+33354730645">Appeler le 03 54 73 06 45</a>
       <a class="mm-cta" href="#contact">Demander un devis gratuit</a>
     </nav>
   </header>
@@ -432,10 +430,10 @@
         <p class="eyebrow">Conseils &amp; spécificités locales</p>
         <h2 id="blog-title" style="margin:0 0 12px;font-size:clamp(26px,3.6vw,40px);line-height:1.1;font-weight:900;letter-spacing:-0.02em;color:#333333">Le blog du couvreur en Moselle</h2>
         <p style="margin:0 0 8px;font-size:17px;line-height:1.6;color:#5a5a5a;max-width:62ch">Nos conseils d'artisan pour entretenir et rénover votre toiture, avec les particularités du climat lorrain et du droit local Alsace-Moselle.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:28px">
+        <div style="display:flex;gap:16px;margin-top:28px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;-webkit-overflow-scrolling:touch">
 
-          <a class="card blog-card" href="blog/entretien-toiture-climat-lorrain.html" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/realisation-ardoise-clocher-metz.jpg" alt="Toiture en ardoise à entretenir en Moselle" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
+          <a class="card blog-card" href="blog/entretien-toiture-climat-lorrain.html" style="flex:0 0 clamp(280px,80vw,360px);scroll-snap-align:start;background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
+            <img src="assets/article-entretien-climat.jpg" alt="Toiture envahie de mousse en zone boisée, climat lorrain" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
             <div style="padding:20px 22px">
               <p class="tag">Entretien</p>
               <h3>Entretenir sa toiture en Moselle : mousse, gel et climat lorrain</h3>
@@ -444,8 +442,8 @@
             </div>
           </a>
 
-          <a class="card blog-card" href="blog/refaire-toiture-metz-autorisations-aides.html" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/hero-couverture-metz.jpg" alt="Réfection de toiture à Metz : démarches et aides" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
+          <a class="card blog-card" href="blog/refaire-toiture-metz-autorisations-aides.html" style="flex:0 0 clamp(280px,80vw,360px);scroll-snap-align:start;background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
+            <img src="assets/article-renovation-toiture.jpg" alt="Couvreurs au travail lors d'une réfection de toiture" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
             <div style="padding:20px 22px">
               <p class="tag">Rénovation</p>
               <h3>Refaire sa toiture à Metz : autorisations, ABF et aides financières</h3>
@@ -454,8 +452,8 @@
             </div>
           </a>
 
-          <a class="card blog-card" href="blog/toiture-droit-local-alsace-moselle.html" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/realisation-charpente-metz.jpg" alt="Charpente et droit local en Alsace-Moselle" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
+          <a class="card blog-card" href="blog/toiture-droit-local-alsace-moselle.html" style="flex:0 0 clamp(280px,80vw,360px);scroll-snap-align:start;background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
+            <img src="assets/article-vieux-toits.jpg" alt="Vieux toits en tuiles et cheminées, patrimoine Alsace-Moselle" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
             <div style="padding:20px 22px">
               <p class="tag">Droit local</p>
               <h3>Toiture et droit local Alsace-Moselle : ce qu'il faut savoir</h3>
@@ -464,8 +462,8 @@
             </div>
           </a>
 
-          <a class="card blog-card" href="blog/demoussage-toiture-methode-professionnelle.html" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/hero-couverture-metz.jpg" alt="Démoussage de toiture à la main en Moselle" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
+          <a class="card blog-card" href="blog/demoussage-toiture-methode-professionnelle.html" style="flex:0 0 clamp(280px,80vw,360px);scroll-snap-align:start;background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
+            <img src="assets/article-demoussage.jpg" alt="Tuiles envahies par la mousse, avant démoussage" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
             <div style="padding:20px 22px">
               <p class="tag">Démoussage</p>
               <h3>Démoussage de toiture : la méthode manuelle qui préserve vos tuiles</h3>
@@ -474,8 +472,8 @@
             </div>
           </a>
 
-          <a class="card blog-card" href="blog/habillages-cheminees-planches-toiture.html" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/realisation-charpente-metz.jpg" alt="Habillage de planches et de cheminée en zinc ou aluminium thermolaqué" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
+          <a class="card blog-card" href="blog/habillages-cheminees-planches-toiture.html" style="flex:0 0 clamp(280px,80vw,360px);scroll-snap-align:start;background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
+            <img src="assets/article-cheminees.jpg" alt="Cheminées en brique sur une toiture" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
             <div style="padding:20px 22px">
               <p class="tag">Zinguerie</p>
               <h3>Habillages, planches de rive et cheminées : protéger et embellir votre toit</h3>
