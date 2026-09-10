@@ -29,6 +29,7 @@ article h3 { font-size:18px; font-weight:800; margin:22px 0 8px; }
 article p { font-size:16.5px; line-height:1.7; color:#3f3f3f; margin:0 0 16px; }
 article ul { margin:0 0 16px; padding-left:22px; }
 article li { font-size:16.5px; line-height:1.7; color:#3f3f3f; margin:0 0 8px; }
+.article-hero { width:100%; height:clamp(220px,38vw,360px); object-fit:cover; border-radius:16px; display:block; margin:6px 0 28px; }
 .callout { background:var(--cream); border:1px solid #eae3d7; border-left:4px solid var(--blue); border-radius:12px; padding:18px 20px; margin:24px 0; }
 .callout p { margin:0; font-size:16px; }
 .article-cta { background:#333333; color:#fff; border-radius:16px; padding:28px clamp(20px,4vw,32px); margin:36px 0 0; text-align:center; }
