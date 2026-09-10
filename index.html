@@ -69,6 +69,30 @@
   .reveal { opacity: 0; transform: translateY(26px); transition: opacity .55s ease, transform .55s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
+  /* Menu de navigation */
+  section[id] { scroll-margin-top: 78px; }
+  .site-nav { display: flex; align-items: center; gap: clamp(10px,1.6vw,22px); }
+  .site-nav a { font-weight: 700; font-size: 15px; color: #333333; white-space: nowrap; }
+  .site-nav a:hover { color: #2A46E0; text-decoration: none; }
+  .nav-toggle { display: none; align-items: center; justify-content: center; width: 42px; height: 40px; border: 1px solid #e0d9cc; border-radius: 10px; background: #FFFFFF; color: #333333; cursor: pointer; flex: none; }
+  .mobile-menu { border-top: 1px solid #e8e2d8; background: #FFFFFF; padding: 6px clamp(16px,5vw,32px) 16px; }
+  .mobile-menu a { display: block; padding: 13px 2px; font-weight: 700; font-size: 17px; color: #333333; border-bottom: 1px solid #f0ebe1; }
+  .mobile-menu a:hover { color: #2A46E0; text-decoration: none; }
+  .mobile-menu .mm-cta { margin-top: 14px; background: #2A46E0; color: #FFFFFF; text-align: center; border-radius: 10px; border-bottom: 0; padding: 15px; }
+  @media (max-width: 880px) {
+    .site-nav { display: none; }
+    .header-tel { display: none !important; }
+    .nav-toggle { display: inline-flex; }
+  }
+
+  /* Cartes blog */
+  .blog-card { color: #333333; text-decoration: none; display: block; }
+  .blog-card:hover { text-decoration: none; color: #333333; }
+  .blog-card .tag { margin: 0 0 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #2A46E0; }
+  .blog-card h3 { margin: 0 0 10px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.25; color: #333333; }
+  .blog-card p { margin: 0 0 14px; font-size: 15px; line-height: 1.55; color: #5a5a5a; }
+  .blog-card .readmore { font-weight: 800; font-size: 14.5px; color: #2A46E0; }
+
   /* Corrections mobile */
   @media (max-width: 480px) { .header-tel { display: none !important; } }
   @media (max-width: 760px) { .why-intro { position: static !important; top: auto !important; } }
@@ -152,24 +176,41 @@
 <div style="background:#FFFFFF">
 
   <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.96);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #e8e2d8">
-    <div class="wrap" style="padding:10px clamp(12px,4vw,32px);display:flex;align-items:center;gap:clamp(6px,1.5vw,16px);flex-wrap:nowrap">
-      <a href="#top" style="display:flex;align-items:center;gap:8px;color:#333333;text-decoration:none;margin-right:auto;min-width:0">
+    <div class="wrap" style="padding:10px clamp(12px,4vw,32px);display:flex;align-items:center;gap:clamp(6px,1.5vw,14px);flex-wrap:nowrap">
+      <a href="#top" style="display:flex;align-items:center;gap:8px;color:#333333;text-decoration:none;margin-right:auto;min-width:0;flex:none">
         <img src="assets/logo.png" width="36" height="32" alt="Logo SAS Schoeffter, couvreur à Metz" style="display:block;width:36px;height:auto;flex:none">
         <span class="brand-name" style="font-weight:900;letter-spacing:-0.03em;font-size:clamp(13px,2.8vw,19px);white-space:nowrap;font-family:'Freeroad',Archivo,Helvetica,sans-serif">SAS SCHOEFFTER</span>
       </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="#prestations">Prestations</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#blog">Conseils</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact">Contact</a>
+      </nav>
       <a class="header-tel" href="tel:+33354730645" aria-label="Appeler le 03 54 73 06 45" style="display:inline-flex;align-items:center;font-weight:800;font-size:clamp(12px,2.2vw,17px);color:#333333;padding:9px 0;border-radius:10px;white-space:nowrap;flex:none">03 54 73 06 45</a>
       <a class="header-devis" href="#contact" style="font-weight:800;font-size:clamp(12px,2.2vw,17px);color:#FFFFFF;background:#2A46E0;padding:10px clamp(10px,1.6vw,18px);border-radius:10px;box-shadow:0 8px 18px rgba(42,70,224,0.25);white-space:nowrap;flex:none">Devis gratuit</a>
+      <button type="button" class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+      </button>
     </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobile" hidden>
+      <a href="#prestations">Prestations</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#blog">Conseils</a>
+      <a href="#avis">Avis clients</a>
+      <a href="#zone">Zone d'intervention</a>
+      <a href="#faq">FAQ</a>
+      <a href="tel:+33354730645">Appeler le 03 54 73 06 45</a>
+      <a class="mm-cta" href="#contact">Demander un devis gratuit</a>
+    </nav>
   </header>
 
   <main id="top">
 
     <section aria-labelledby="hero-title" style="position:relative;background:#FAF4EC;overflow:hidden;isolation:isolate">
-      <div aria-hidden="true" style="position:absolute;inset:0;background:#efe7da">
-        <video autoplay muted loop playsinline preload="auto" poster="assets/hero-couverture-metz.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%">
-          <source src="assets/couvreur-metz-video.mp4" type="video/mp4">
-          <img src="assets/hero-couverture-metz.jpg" alt="Réfection de toiture en tuiles par un couvreur à Metz, en Moselle" style="width:100%;height:100%;object-fit:cover">
-        </video>
+      <div aria-hidden="true" style="position:absolute;inset:0;background:#efe7da center/cover no-repeat url('assets/hero-couverture-metz.jpg')">
+        <video id="hero-video" muted loop playsinline preload="none" poster="assets/hero-couverture-metz.jpg" data-src="assets/couvreur-metz-video.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%"></video>
       </div>
       <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(250,244,236,0.97) 0%,rgba(250,244,236,0.92) 40%,rgba(250,244,236,0.55) 70%,rgba(250,244,236,0.15) 100%)"></div>
       <div class="wrap" style="position:relative;padding:clamp(60px,9vw,110px) clamp(20px,5vw,32px);min-height:clamp(460px,64vh,720px);display:flex;flex-direction:column;justify-content:center">
@@ -413,6 +454,47 @@
       </div>
     </section>
 
+    <section id="blog" aria-labelledby="blog-title" style="background:#FAF4EC">
+      <div class="wrap" style="padding:clamp(56px,8vw,88px) clamp(20px,5vw,32px)">
+        <p class="eyebrow">Conseils &amp; spécificités locales</p>
+        <h2 id="blog-title" style="margin:0 0 12px;font-size:clamp(26px,3.6vw,40px);line-height:1.1;font-weight:900;letter-spacing:-0.02em;color:#333333">Le blog du couvreur en Moselle</h2>
+        <p style="margin:0 0 8px;font-size:17px;line-height:1.6;color:#5a5a5a;max-width:62ch">Nos conseils d'artisan pour entretenir et rénover votre toiture, avec les particularités du climat lorrain et du droit local Alsace-Moselle.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:28px">
+
+          <a class="card blog-card" href="blog/entretien-toiture-climat-lorrain.html" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
+            <img src="assets/realisation-ardoise-clocher-metz.jpg" alt="Toiture en ardoise à entretenir en Moselle" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
+            <div style="padding:20px 22px">
+              <p class="tag">Entretien</p>
+              <h3>Entretenir sa toiture en Moselle : mousse, gel et climat lorrain</h3>
+              <p>Pourquoi le climat lorrain fatigue les toitures, et comment un entretien régulier évite des réparations coûteuses.</p>
+              <span class="readmore">Lire l'article →</span>
+            </div>
+          </a>
+
+          <a class="card blog-card" href="blog/refaire-toiture-metz-autorisations-aides.html" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
+            <img src="assets/hero-couverture-metz.jpg" alt="Réfection de toiture à Metz : démarches et aides" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
+            <div style="padding:20px 22px">
+              <p class="tag">Rénovation</p>
+              <h3>Refaire sa toiture à Metz : autorisations, ABF et aides financières</h3>
+              <p>Déclaration en mairie, secteur protégé, MaPrimeRénov' et TVA réduite : le parcours d'une réfection de toiture réussie.</p>
+              <span class="readmore">Lire l'article →</span>
+            </div>
+          </a>
+
+          <a class="card blog-card" href="blog/toiture-droit-local-alsace-moselle.html" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
+            <img src="assets/realisation-charpente-metz.jpg" alt="Charpente et droit local en Alsace-Moselle" loading="lazy" style="display:block;width:100%;height:170px;object-fit:cover">
+            <div style="padding:20px 22px">
+              <p class="tag">Droit local</p>
+              <h3>Toiture et droit local Alsace-Moselle : ce qu'il faut savoir</h3>
+              <p>Jours fériés locaux, livre foncier, mitoyenneté : les particularités qui influent sur vos travaux de couverture.</p>
+              <span class="readmore">Lire l'article →</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
     <section id="contact" aria-labelledby="contact-title" style="background:#333333;color:#FFFFFF">
       <div class="wrap" style="padding:clamp(56px,8vw,88px) clamp(20px,5vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px)">
         <div>
@@ -491,9 +573,16 @@
 
 <script>
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) {
-    var heroVideo = document.querySelector('section video');
-    if (heroVideo) { heroVideo.removeAttribute('autoplay'); heroVideo.pause(); }
+  // Vidéo hero chargée uniquement sur desktop (mobile = photo poster, économise ~6,5 Mo)
+  var heroVideo = document.getElementById('hero-video');
+  if (heroVideo && !reduceMotion && window.innerWidth >= 768) {
+    var vsrc = document.createElement('source');
+    vsrc.src = heroVideo.getAttribute('data-src');
+    vsrc.type = 'video/mp4';
+    heroVideo.appendChild(vsrc);
+    heroVideo.load();
+    heroVideo.addEventListener('canplay', function () { heroVideo.play().catch(function () {}); }, { once: true });
+    heroVideo.play().catch(function () {});
   }
 
   var revealEls = document.querySelectorAll('.reveal');
@@ -505,6 +594,19 @@
   } else {
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
+  var navToggle = document.querySelector('.nav-toggle');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', function () {
+      var isHidden = mobileMenu.hasAttribute('hidden');
+      if (isHidden) { mobileMenu.removeAttribute('hidden'); navToggle.setAttribute('aria-expanded', 'true'); }
+      else { mobileMenu.setAttribute('hidden', ''); navToggle.setAttribute('aria-expanded', 'false'); }
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { mobileMenu.setAttribute('hidden', ''); navToggle.setAttribute('aria-expanded', 'false'); });
+    });
+  }
+
   document.getElementById('devis-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var f = e.target;
