@@ -72,7 +72,7 @@
   /* Sceau garantie décennale : effet tampon / étiquette qui se colle */
   @keyframes stamp { 0% { opacity: 0; transform: rotate(-18deg) scale(0.4); } 55% { opacity: 1; transform: rotate(12deg) scale(1.14); } 100% { opacity: 1; transform: rotate(10deg) scale(1); } }
   .seal-stamp { opacity: 0; }
-  .seal-stamp.is-stamped { animation: stamp .6s cubic-bezier(.2,.7,.3,1.25) both; }
+  .seal-stamp.is-stamped { animation: stamp 1.3s cubic-bezier(.2,.7,.3,1.25) both; }
 
   /* Menu de navigation */
   section[id] { scroll-margin-top: 78px; }
@@ -235,7 +235,7 @@
     </section>
 
     <section aria-label="Nos activités" style="position:relative">
-      <img class="seal-stamp" src="assets/garantie-decennale-or.svg" alt="Garantie décennale sur nos travaux de couverture et de charpente" style="position:absolute;top:-16px;right:clamp(8px,4vw,64px);height:clamp(74px,12vw,128px);width:auto;transform:rotate(10deg);z-index:5;filter:drop-shadow(0 10px 16px rgba(0,0,0,0.45)) drop-shadow(0 3px 6px rgba(0,0,0,0.35));pointer-events:none">
+      <img class="seal-stamp" src="assets/garantie-decennale-or.svg?v=2" alt="Garantie décennale sur nos travaux de couverture et de charpente" style="position:absolute;top:-16px;right:clamp(8px,4vw,64px);height:clamp(74px,12vw,128px);width:auto;transform:rotate(10deg);z-index:5;filter:drop-shadow(0 10px 16px rgba(0,0,0,0.45)) drop-shadow(0 3px 6px rgba(0,0,0,0.35));pointer-events:none">
       <div style="background:#2A46E0;border-top:2px solid #333333;border-bottom:2px solid #333333;overflow:hidden;padding:14px 0">
         <div data-marquee style="display:flex;width:max-content;animation:marquee 30s linear infinite">
           <span aria-hidden="true" style="display:flex;align-items:center;gap:clamp(18px,3vw,40px);padding-right:clamp(18px,3vw,40px);color:#FFFFFF;font-weight:900;font-size:clamp(13px,1.9vw,20px);letter-spacing:-0.01em;white-space:nowrap">Charpente<span style="opacity:.55">·</span>Couverture<span style="opacity:.55">·</span>Zinguerie<span style="opacity:.55">·</span>Entretien<span style="opacity:.55">·</span>Démoussage<span style="opacity:.55">·</span>Contrôle<span style="opacity:.55">·</span></span>
