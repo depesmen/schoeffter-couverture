@@ -100,7 +100,6 @@
 
   /* Corrections mobile */
   @media (max-width: 600px) { .installer-line { flex-direction: column; gap: 8px; } }
-  @media (min-width: 881px) { .seal-stamp { top: -58px !important; } }
   @media (max-width: 480px) { .header-tel { display: none !important; } }
   @media (max-width: 760px) { .why-intro { position: static !important; top: auto !important; } }
 
@@ -234,13 +233,15 @@
       </div>
     </section>
 
-    <section aria-label="Nos activités" style="position:relative">
-      <img class="seal-stamp" src="assets/garantie-decennale-or.svg?v=3" alt="Garantie décennale sur nos travaux de couverture et de charpente" style="position:absolute;top:-34px;right:clamp(8px,4vw,64px);height:clamp(104px,17vw,184px);width:auto;border-radius:16px;transform:rotate(10deg);z-index:5;filter:drop-shadow(0 10px 15px rgba(0,0,0,0.3)) drop-shadow(0 3px 5px rgba(0,0,0,0.22));pointer-events:none">
+    <section aria-label="Nos activités">
+      <div style="position:relative">
       <div style="background:#2A46E0;border-top:2px solid #333333;border-bottom:2px solid #333333;overflow:hidden;padding:14px 0">
         <div data-marquee style="display:flex;width:max-content;animation:marquee 30s linear infinite">
           <span aria-hidden="true" style="display:flex;align-items:center;gap:clamp(18px,3vw,40px);padding-right:clamp(18px,3vw,40px);color:#FFFFFF;font-weight:900;font-size:clamp(13px,1.9vw,20px);letter-spacing:-0.01em;white-space:nowrap">Charpente<span style="opacity:.55">·</span>Couverture<span style="opacity:.55">·</span>Zinguerie<span style="opacity:.55">·</span>Entretien<span style="opacity:.55">·</span>Démoussage<span style="opacity:.55">·</span>Contrôle<span style="opacity:.55">·</span></span>
           <span style="display:flex;align-items:center;gap:clamp(18px,3vw,40px);padding-right:clamp(18px,3vw,40px);color:#FFFFFF;font-weight:900;font-size:clamp(13px,1.9vw,20px);letter-spacing:-0.01em;white-space:nowrap">Charpente<span style="opacity:.55">·</span>Couverture<span style="opacity:.55">·</span>Zinguerie<span style="opacity:.55">·</span>Entretien<span style="opacity:.55">·</span>Démoussage<span style="opacity:.55">·</span>Contrôle<span style="opacity:.55">·</span></span>
         </div>
+      </div>
+        <span style="position:absolute;top:50%;right:clamp(8px,4vw,64px);transform:translateY(-50%);z-index:5;pointer-events:none"><img class="seal-stamp" src="assets/garantie-decennale-or.svg?v=3" alt="Garantie décennale sur nos travaux de couverture et de charpente" style="display:block;height:clamp(104px,17vw,184px);width:auto;border-radius:16px;transform:rotate(10deg);filter:drop-shadow(0 10px 15px rgba(0,0,0,0.3)) drop-shadow(0 3px 5px rgba(0,0,0,0.22))"></span>
       </div>
       <div style="background:linear-gradient(180deg,#FAF4EC 0%,#FFFFFF 100%)">
         <p class="wrap installer-line" style="padding:26px clamp(20px,5vw,32px) 8px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-weight:800;font-size:clamp(16px,2.6vw,26px);color:#333333">&amp; installateur <img src="assets/logo-velux.svg" alt="Installateur Velux agréé" width="87" height="30" style="display:block;height:clamp(26px,3.4vw,40px);width:auto"></p>
