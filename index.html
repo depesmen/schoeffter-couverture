@@ -58,6 +58,14 @@
   .submit-btn { transition: transform .2s ease, background .2s ease; }
   .submit-btn:hover { background: #1c33ad; transform: translateY(-2px); }
 
+  /* CTA — animation variante 1 : remplissage latéral + flèche */
+  .btn-primary, .header-devis, .submit-btn, .contact-tel { position: relative; overflow: hidden; isolation: isolate; }
+  .btn-primary::before, .header-devis::before, .submit-btn::before, .contact-tel::before { content: ""; position: absolute; inset: 0; background: #1b2a72; transform: translateX(-101%); transition: transform .55s cubic-bezier(.16,1,.3,1); z-index: -1; }
+  .btn-primary:hover::before, .header-devis:hover::before, .submit-btn:hover::before, .contact-tel:hover::before { transform: translateX(0); }
+  .btn-primary:hover, .header-devis:hover, .submit-btn:hover, .contact-tel:hover { background: #2A46E0; }
+  .btn-primary::after, .header-devis::after, .service-cta::after { content: "\2192"; display: inline-block; margin-left: 8px; transition: transform .55s cubic-bezier(.16,1,.3,1); }
+  .btn-primary:hover::after, .header-devis:hover::after, .service-cta:hover::after { transform: translateX(5px); }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
