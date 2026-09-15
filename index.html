@@ -49,7 +49,7 @@
 
   .card { transition: transform .22s ease, box-shadow .22s ease; }
   .card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(51,51,51,0.12); }
-  .service-cta { transition: background .2s ease, color .2s ease; }
+  .service-cta { color: #2A46E0; transition: background .2s ease, color .2s ease; }
   .service-cta:hover { background: #2A46E0; color: #FFFFFF; text-decoration: none; }
   .review-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(51,51,51,0.1); }
   .contact-cta { transition: background .2s ease, transform .2s ease, color .2s ease; }
@@ -59,9 +59,9 @@
   .submit-btn:hover { background: #1c33ad; transform: translateY(-2px); }
 
   /* CTA — animation variante 1 : remplissage latéral + flèche */
-  .btn-primary, .header-devis, .submit-btn, .contact-tel { position: relative; overflow: hidden; isolation: isolate; }
-  .btn-primary::before, .header-devis::before, .submit-btn::before, .contact-tel::before { content: ""; position: absolute; inset: 0; background: #1b2a72; transform: translateX(-101%); transition: transform .55s cubic-bezier(.16,1,.3,1); z-index: -1; }
-  .btn-primary:hover::before, .header-devis:hover::before, .submit-btn:hover::before, .contact-tel:hover::before { transform: translateX(0); }
+  .btn-primary, .header-devis, .submit-btn, .contact-tel, .service-cta { position: relative; overflow: hidden; isolation: isolate; }
+  .btn-primary::before, .header-devis::before, .submit-btn::before, .contact-tel::before, .service-cta::before { content: ""; position: absolute; inset: 0; background: #1b2a72; transform: translateX(-101%); transition: transform .55s cubic-bezier(.16,1,.3,1); z-index: -1; }
+  .btn-primary:hover::before, .header-devis:hover::before, .submit-btn:hover::before, .contact-tel:hover::before, .service-cta:hover::before { transform: translateX(0); }
   .btn-primary:hover, .header-devis:hover, .submit-btn:hover, .contact-tel:hover { background: #2A46E0; }
   .btn-primary::after, .header-devis::after, .service-cta::after { content: "\2192"; display: inline-block; margin-left: 8px; transition: transform .55s cubic-bezier(.16,1,.3,1); }
   .btn-primary:hover::after, .header-devis:hover::after, .service-cta:hover::after { transform: translateX(5px); }
@@ -269,49 +269,49 @@
             <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13 12 5l10 8"></path><path d="M6 21V12"></path><path d="M18 21V12"></path><path d="M12 8v13"></path><path d="M7 16h10"></path></svg></span>
             <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Charpente</h3>
             <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Charpente traditionnelle ou industrielle, réparation et remplacement de pièces de bois attaquées.</p>
-            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;color:#2A46E0;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
+            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
           </article>
 
           <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
             <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12 12 4l10 8"></path><path d="M4 12h16"></path><path d="M5 16h14"></path><path d="M6 20h12"></path></svg></span>
             <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Couverture</h3>
             <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Réfection de toiture en tuiles, ardoises ou zinc. Réparation de fuite et rénovation complète.</p>
-            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;color:#2A46E0;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
+            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
           </article>
 
           <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
             <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"></path><path d="M3 6v4a3 3 0 0 0 3 3h12"></path><path d="M18 13v8"></path><path d="M15 21h6"></path></svg></span>
             <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Zinguerie</h3>
             <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Gouttières, chéneaux, noues et solins. Habillage zinc posé par un couvreur zingueur à Metz.</p>
-            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;color:#2A46E0;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
+            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
           </article>
 
           <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
             <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.5 4.2 5.5 7 5.5 9.4A5.5 5.5 0 0 1 12 18a5.5 5.5 0 0 1-5.5-5.6C6.5 10 8.5 7.2 12 3Z"></path><path d="M5 21h14"></path></svg></span>
             <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Démoussage / Entretien</h3>
             <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Nettoyage, démoussage et traitement hydrofuge pour prolonger la vie de votre toiture.</p>
-            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;color:#2A46E0;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
+            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
           </article>
 
           <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
             <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13 12 5l10 8"></path><path d="M4 13v8h16v-8"></path><path d="M8 21v-8"></path><path d="M16 21v-8"></path><path d="M4 17h16"></path></svg></span>
             <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Isolation</h3>
             <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Isolation des combles perdus ou aménagés. Moins de déperditions, plus de confort l'hiver.</p>
-            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;color:#2A46E0;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
+            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
           </article>
 
           <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
             <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12 12 4l9 8"></path><path d="M5 12v9h14v-9"></path><path d="M10 21v-6h4v6"></path></svg></span>
             <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Rénovation de combles</h3>
             <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Aménagement et rénovation de combles : structure, isolation, étanchéité et éclairage naturel.</p>
-            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;color:#2A46E0;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
+            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
           </article>
 
           <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
             <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12 12 4l9 8"></path><path d="M7 21V13h10v8Z"></path><path d="M12 13v8"></path><path d="M7 17h10"></path></svg></span>
             <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Pose de Velux</h3>
             <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Installateur Velux : pose et remplacement de fenêtres de toit, volets et stores, étanchéité garantie.</p>
-            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;color:#2A46E0;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
+            <a class="service-cta" href="#contact" style="font-weight:800;font-size:15px;border:1.5px solid #2A46E0;border-radius:10px;padding:11px 16px;text-align:center">Demander un devis</a>
           </article>
 
         </div>
