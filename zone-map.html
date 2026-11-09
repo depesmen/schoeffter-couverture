@@ -17,16 +17,15 @@
 <script>
 const cities = [
   { n: "Luxembourg", c: [6.13, 49.61], big: true },
-  { n: "Thionville", c: [6.17, 49.36], off: -1 },
+  { n: "Longwy", c: [5.76, 49.52], off: -1 },
+  { n: "Thionville", c: [6.17, 49.36] },
   { n: "Metz", c: [6.176, 49.119], hq: true },
-  { n: "Sarreguemines", c: [7.07, 49.11] },
-  { n: "Nancy", c: [6.184, 48.692], big: true },
-  { n: "Sarrebourg", c: [7.05, 48.73] }
+  { n: "Nancy", c: [6.184, 48.692], big: true }
 ];
 const zones = [
-  { n: "Luxembourg", c: [6.10, 49.72], r: 0.30, l: [6.10, 50.02] },
-  { n: "Moselle", c: [6.65, 49.08], r: 0.52, l: [7.05, 49.45] },
-  { n: "Meurthe-et-Moselle", c: [6.20, 48.62], r: 0.46, l: [6.20, 48.28] }
+  { n: "Luxembourg", c: [6.12, 49.74], r: 0.25, l: [6.12, 50.02] },
+  { n: "Moselle", c: [6.28, 49.17], r: 0.44, l: [6.78, 49.44] },
+  { n: "Meurthe-et-Moselle", c: [5.88, 49.04], r: 0.61, l: [5.45, 48.54] }
 ];
 const svg = d3.select("#map");
 d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json").then(topo => {
@@ -34,9 +33,9 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json").th
   function draw() {
     const w = document.body.clientWidth, h = document.body.clientHeight;
     svg.attr("viewBox", [0, 0, w, h]).selectAll("*").remove();
-    const lonSpan = 4.6, latSpan = 3.1;
+    const lonSpan = 4.8, latSpan = 3.1;
     const k = Math.min((w - 16) / lonSpan, (h - 16) / latSpan) * (180 / Math.PI);
-    const proj = d3.geoMercator().center([6.35, 49.18]).scale(k).translate([w / 2, h / 2]);
+    const proj = d3.geoMercator().center([6.05, 49.15]).scale(k).translate([w / 2, h / 2]);
     const path = d3.geoPath(proj);
     svg.append("g").selectAll("path").data(land.features).join("path")
       .attr("d", path).attr("fill", "#EBE1D1").attr("stroke", "#FFFFFF").attr("stroke-width", 1.6);
