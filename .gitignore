@@ -4,3 +4,6 @@ node_modules/
 .env
 .vscode/
 .idea/
+
+# Dossier source des photos de chantiers (originaux lourds, non publiés)
+cards/
