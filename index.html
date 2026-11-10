@@ -584,12 +584,15 @@
         </div>
         <div style="background:#FFFFFF;color:#333333;border-radius:16px;padding:clamp(20px,3vw,30px);box-shadow:0 20px 44px rgba(0,0,0,0.25)">
           <h3 style="margin:0 0 18px;font-size:20px;font-weight:900;letter-spacing:-0.01em">Votre demande de devis</h3>
-          <form id="devis-form" style="display:flex;flex-direction:column;gap:14px">
+          <form id="devis-form" action="https://formspree.io/f/xrppnlbo" method="POST" style="display:flex;flex-direction:column;gap:14px">
             <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#5a5a5a">Nom
               <input name="nom" type="text" required autocomplete="name" placeholder="Votre nom" style="font-family:inherit;font-size:16px;color:#333333;padding:13px 14px;border:1.5px solid #ddd6c9;border-radius:10px;background:#FFFFFF;font-weight:500">
             </label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#5a5a5a">Téléphone
               <input name="tel" type="tel" required autocomplete="tel" placeholder="06 00 00 00 00" style="font-family:inherit;font-size:16px;color:#333333;padding:13px 14px;border:1.5px solid #ddd6c9;border-radius:10px;background:#FFFFFF;font-weight:500">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#5a5a5a">E-mail (facultatif)
+              <input name="email" type="email" autocomplete="email" placeholder="vous@exemple.com" style="font-family:inherit;font-size:16px;color:#333333;padding:13px 14px;border:1.5px solid #ddd6c9;border-radius:10px;background:#FFFFFF;font-weight:500">
             </label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#5a5a5a">Prestation
               <select name="prestation" style="font-family:inherit;font-size:16px;color:#333333;padding:13px 14px;border:1.5px solid #ddd6c9;border-radius:10px;background:#FFFFFF;font-weight:500">
@@ -607,6 +610,8 @@
             <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#5a5a5a">Message
               <textarea name="message" rows="4" placeholder="Commune, type de toiture, nature des travaux" style="font-family:inherit;font-size:16px;color:#333333;padding:13px 14px;border:1.5px solid #ddd6c9;border-radius:10px;background:#FFFFFF;font-weight:500;resize:vertical"></textarea>
             </label>
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
+            <input type="hidden" name="_subject" value="Nouvelle demande de devis - site Schoeffter">
             <button type="submit" class="submit-btn" style="font-family:inherit;font-weight:900;font-size:17px;color:#FFFFFF;background:#2A46E0;border:0;padding:16px 22px;border-radius:12px;cursor:pointer;box-shadow:0 10px 24px rgba(42,70,224,0.28)">Envoyer ma demande</button>
             <p id="form-statut" role="status" style="margin:0;font-size:14.5px;line-height:1.5;color:#2A46E0;font-weight:700;min-height:20px"></p>
             <p style="margin:0;font-size:13px;line-height:1.5;color:#8a8a8a">Vos données servent uniquement à établir votre devis. Prise de contact sous 48h ouvrées.</p>
@@ -715,23 +720,32 @@
   document.getElementById('devis-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var f = e.target;
-    var nom = (f.nom.value || '').trim();
-    var tel = (f.tel.value || '').trim();
-    var prestation = f.prestation.value;
-    var message = (f.message.value || '').trim();
-    var subject = encodeURIComponent('Demande de devis - ' + prestation);
-    var body = encodeURIComponent(
-      'Nom : ' + nom + '\n' +
-      'Téléphone : ' + tel + '\n' +
-      'Prestation : ' + prestation + '\n\n' +
-      message
-    );
     var statut = document.getElementById('form-statut');
-    statut.textContent = nom
-      ? 'Merci ' + nom + ', votre demande est prête. Votre messagerie va s’ouvrir pour l’envoyer à toiture.rs@gmail.com.'
-      : 'Votre demande est prête, votre messagerie va s’ouvrir.';
-    window.location.href = 'mailto:toiture.rs@gmail.com?subject=' + subject + '&body=' + body;
-    f.reset();
+    var btn = f.querySelector('button[type="submit"]');
+    var nom = (f.nom.value || '').trim();
+    statut.style.color = '#2A46E0';
+    statut.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+    fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
+      .then(function (resp) {
+        if (resp.ok) {
+          f.reset();
+          statut.style.color = '#1e7a46';
+          statut.textContent = (nom ? 'Merci ' + nom + ', votre' : 'Votre') + ' demande a bien été envoyée. Nous vous recontactons sous 48h ouvrées.';
+        } else {
+          return resp.json().then(function (data) {
+            statut.style.color = '#c0392b';
+            statut.textContent = (data && data.errors && data.errors.length)
+              ? data.errors.map(function (x) { return x.message; }).join(', ')
+              : 'Une erreur est survenue. Appelez-nous au 03 54 73 06 45.';
+          });
+        }
+      })
+      .catch(function () {
+        statut.style.color = '#c0392b';
+        statut.textContent = 'Envoi impossible pour le moment. Appelez-nous au 03 54 73 06 45.';
+      })
+      .finally(function () { btn.disabled = false; });
   });
 </script>
 </body>
