@@ -111,7 +111,7 @@
   .blog-card .readmore { font-weight: 800; font-size: 14.5px; color: #2A46E0; }
 
   /* Corrections mobile */
-  @media (max-width: 600px) { .installer-line { flex-direction: column; gap: 8px; } #realisations .card img { height: auto !important; } #hero-video { object-position: 50% 0% !important; } .hero-bg { background-position: center top !important; } }
+  @media (max-width: 600px) { .installer-line { flex-direction: column; gap: 8px; } #realisations .card img { height: auto !important; } #hero-video { object-position: 50% 0% !important; } .hero-bg { background-position: center top !important; } .brand-logo { width: 52px !important; } }
   @media (max-width: 480px) { .header-tel { display: none !important; } }
   @media (max-width: 760px) { .why-intro { position: static !important; top: auto !important; } }
 
@@ -201,7 +201,7 @@
   <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.96);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #e8e2d8">
     <div class="wrap" style="padding:10px clamp(12px,4vw,32px);display:flex;align-items:center;gap:clamp(6px,1.5vw,14px);flex-wrap:nowrap">
       <a href="#top" style="display:flex;align-items:center;gap:8px;color:#333333;text-decoration:none;margin-right:auto;min-width:0;flex:none">
-        <img src="assets/logo.png" width="36" height="32" alt="Logo SAS Schoeffter, couvreur à Metz" style="display:block;width:36px;height:auto;flex:none">
+        <img class="brand-logo" src="assets/logo.png" width="36" height="32" alt="Logo SAS Schoeffter, couvreur à Metz" style="display:block;width:36px;height:auto;flex:none">
         <span class="brand-name" style="font-weight:900;letter-spacing:-0.03em;font-size:clamp(13px,2.8vw,19px);white-space:nowrap;font-family:'Freeroad',Archivo,Helvetica,sans-serif">SAS SCHOEFFTER</span>
       </a>
       <nav class="site-nav" aria-label="Navigation principale">
@@ -591,8 +591,8 @@
             <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#5a5a5a">Téléphone
               <input name="tel" type="tel" required autocomplete="tel" placeholder="06 00 00 00 00" style="font-family:inherit;font-size:16px;color:#333333;padding:13px 14px;border:1.5px solid #ddd6c9;border-radius:10px;background:#FFFFFF;font-weight:500">
             </label>
-            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#5a5a5a">E-mail (facultatif)
-              <input name="email" type="email" autocomplete="email" placeholder="vous@exemple.com" style="font-family:inherit;font-size:16px;color:#333333;padding:13px 14px;border:1.5px solid #ddd6c9;border-radius:10px;background:#FFFFFF;font-weight:500">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#5a5a5a">E-mail
+              <input name="email" type="email" required autocomplete="email" placeholder="vous@exemple.com" style="font-family:inherit;font-size:16px;color:#333333;padding:13px 14px;border:1.5px solid #ddd6c9;border-radius:10px;background:#FFFFFF;font-weight:500">
             </label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#5a5a5a">Prestation
               <select name="prestation" style="font-family:inherit;font-size:16px;color:#333333;padding:13px 14px;border:1.5px solid #ddd6c9;border-radius:10px;background:#FFFFFF;font-weight:500">
