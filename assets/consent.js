@@ -19,7 +19,7 @@
     if (charge) return;
     charge = true;
     gtag('consent', 'update', { analytics_storage: 'granted' });
-    gtag('set', { cookie_expires: 34128000 }); // 13 mois maximum (CNIL)
+    gtag('set', { cookie_expires: 34128000, cookie_update: false }); // 13 mois max depuis la 1re visite, sans prolongation (CNIL)
     gtag('js', new Date());
     var s = document.createElement('script');
     s.async = true;
