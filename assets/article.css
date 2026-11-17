@@ -107,6 +107,18 @@ article .duo-card p { margin:0; font-size:15.5px; line-height:1.6; }
 /* ===== Page Nos chantiers ===== */
 .wrap-wide { max-width:1180px; margin:0 auto; padding:0 clamp(20px,5vw,32px); }
 .gallery-page .lead { max-width:62ch; }
+.chantiers { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; margin:26px 0 8px; }
+@media (max-width:760px) { .chantiers { grid-template-columns:1fr; gap:18px; } }
+.chantier { display:flex; flex-direction:column; background:#fff; border:1px solid #e8e2d8; border-radius:16px; overflow:hidden; box-shadow:0 2px 10px rgba(51,51,51,0.05); scroll-margin-top:80px; }
+/* Filtre esthétique commun à toutes les photos de chantiers */
+.chantier-photo { display:block; width:100%; height:auto; aspect-ratio:1400/812; object-fit:cover; filter:saturate(1.12) contrast(1.08) brightness(1.02); }
+.chantier-body { display:flex; flex-direction:column; flex:1; padding:18px 20px 20px; }
+article .chantier-meta { margin:0 0 6px; font-size:12px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue); }
+article .chantier h2 { margin:0 0 12px; font-size:clamp(18px,2.1vw,21px); line-height:1.25; }
+article .chantier-points { list-style:none; padding:0; margin:0 0 14px; flex:1; }
+article .chantier-points li { margin:0 0 8px; font-size:15px; line-height:1.55; color:#3f3f3f; }
+.chantier-points strong { color:var(--ink); }
+.chantier-link { font-weight:800; font-size:14.5px; }
 
 /* Rien ne doit déborder en largeur (évite le défilement latéral sur mobile) */
 main, .site-footer { overflow-x:clip; }

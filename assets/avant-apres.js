@@ -1,4 +1,4 @@
-/* Curseurs avant / après des chantiers (accueil et page Nos chantiers) */
+/* Curseurs avant / après des chantiers (accueil uniquement) */
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('.ba').forEach(function (el, idx) {
