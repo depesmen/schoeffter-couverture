@@ -19,6 +19,17 @@ Informations clés :
 ## Pages principales
 
 - [Accueil](https://www.schoeffter-toiture.fr/) : présentation, prestations, chantiers réalisés, avis clients, zone d'intervention, FAQ et formulaire de demande de devis
+- [Nos chantiers](https://www.schoeffter-toiture.fr/realisations) : chantiers réalisés en photos avant / après (réfection de toiture, habillages en zinc, charpente, pose de Velux, démoussage)
+
+## Prestations
+
+- [Charpente](https://www.schoeffter-toiture.fr/prestations/charpente) : réparation et remplacement de charpente, changement de ferme, charpente traditionnelle ou industrielle
+- [Couverture et réfection de toiture](https://www.schoeffter-toiture.fr/prestations/couverture) : tuiles, ardoises, zinc, réparation de fuite, intervention d'urgence
+- [Zinguerie](https://www.schoeffter-toiture.fr/prestations/zinguerie) : gouttières, chéneaux, noues, solins, habillages en zinc ou aluminium thermolaqué
+- [Démoussage et entretien de toiture](https://www.schoeffter-toiture.fr/prestations/demoussage-entretien-toiture) : démoussage à la main sans haute pression, traitement hydrofuge, nettoyage des gouttières
+- [Isolation des combles](https://www.schoeffter-toiture.fr/prestations/isolation-combles) : combles perdus ou aménagés, toiture vérifiée avant d'isoler
+- [Rénovation de combles](https://www.schoeffter-toiture.fr/prestations/renovation-combles) : structure, isolation, étanchéité et fenêtres de toit
+- [Pose de Velux](https://www.schoeffter-toiture.fr/prestations/pose-velux) : pose et remplacement de fenêtres de toit, volets et stores, sur tuiles, ardoises ou zinc
 
 ## Conseils toiture (blog)
 

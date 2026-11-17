@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
 <title>Couvreur à Metz et en Moselle | SAS Schoeffter</title>
 <meta name="description" content="Couvreur à Metz et en Moselle, savoir-faire familial depuis 1979 : charpente, couverture, zinguerie, démoussage, Velux. Devis gratuit : 03 54 73 06 45.">
 <link rel="canonical" href="https://www.schoeffter-toiture.fr/">
@@ -27,6 +28,7 @@
 <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
 <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/avant-apres.css">
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: Archivo, Helvetica, Arial, sans-serif; color: #333333; background: #FFFFFF; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
@@ -51,7 +53,6 @@
 
   .card { transition: transform .22s ease, box-shadow .22s ease; }
   .card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(51,51,51,0.12); }
-  #realisations .card img { filter: saturate(1.12) contrast(1.08) brightness(1.02); }
   .service-cta { color: #2A46E0; transition: background .2s ease, color .2s ease; }
   .service-cta:hover { background: #2A46E0; color: #FFFFFF; text-decoration: none; }
   .review-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(51,51,51,0.1); }
@@ -117,10 +118,67 @@
   .blog-card p { margin: 0 0 14px; font-size: 15px; line-height: 1.55; color: #5a5a5a; }
   .blog-card .readmore { font-weight: 800; font-size: 14.5px; color: #2A46E0; }
 
+  /* Prestations : cartes cliquables vers les pages dédiées */
+  .svc-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+  @media (max-width: 1023px) { .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .svc { position: relative; background: #FFFFFF; border: 1px solid #e8e2d8; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 2px 10px rgba(51,51,51,0.05); }
+  .svc h3 { margin: 0; font-size: 19px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.25; color: #333333; }
+  .svc-link, .svc-link:hover { color: inherit; text-decoration: none; }
+  .svc-link::after { content: ""; position: absolute; inset: 0; border-radius: 14px; z-index: 1; }
+  .svc-link:focus-visible { outline: none; }
+  .svc-link:focus-visible::after { outline: 3px solid #2A46E0; outline-offset: 2px; }
+  .svc p { margin: 0; font-size: 15px; line-height: 1.55; color: #5a5a5a; flex: 1; }
+  .svc-icon { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 10px; background: #FAF4EC; color: #2A46E0; transition: background .25s ease, color .25s ease; }
+  .svc:hover .svc-icon { background: #2A46E0; color: #FFFFFF; }
+  .svc-more { font-weight: 800; font-size: 14px; color: #2A46E0; }
+  .svc-more::after { content: "\2192"; display: inline-block; margin-left: 6px; transition: transform .3s ease; }
+  .svc:hover .svc-more::after { transform: translateX(4px); }
+  .svc-urgence { background: #2A46E0; border-color: #2A46E0; }
+  .svc-urgence h3, .svc-urgence p, .svc-urgence .svc-more { color: #FFFFFF; }
+  .svc-urgence .svc-icon { background: rgba(255,255,255,0.16); color: #FFFFFF; }
+  .svc-urgence:hover .svc-icon { background: #FFFFFF; color: #2A46E0; }
+  /* Mobile : tuiles compactes sur 2 colonnes, le détail est sur chaque page */
+  @media (max-width: 640px) {
+    .svc-grid { gap: 10px; }
+    .svc { padding: 14px; gap: 10px; }
+    .svc-icon { width: 40px; height: 40px; }
+    .svc-icon svg { width: 21px; height: 21px; }
+    .svc h3 { font-size: 15.5px; padding-right: 14px; }
+    .svc p { display: none; }
+    .svc-more { position: absolute; top: 12px; right: 13px; font-size: 0; }
+    .svc-more::after { font-size: 16px; margin: 0; }
+    .svc-urgence .svc-more { position: static; font-size: 14px; }
+    .svc-urgence .svc-more::after { display: none; }
+  }
+  /* Animation d'entrée : les cartes montent en cascade et les pictos se dessinent */
+  .svc-grid.anim .svc { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .55s cubic-bezier(.2,.7,.3,1); transition-delay: calc(var(--i) * 70ms); }
+  .svc-grid.anim.in .svc { opacity: 1; transform: none; }
+  .svc-grid.anim .svc-icon path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .9s ease; transition-delay: calc(var(--i) * 70ms + 220ms); }
+  .svc-grid.anim.in .svc-icon path { stroke-dashoffset: 0; }
+
+  /* Réalisations : 3 chantiers avant / après sur l'accueil */
+  .gallery-home { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 24px; }
+  @media (max-width: 600px) {
+    .gallery-home { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .gallery-home > :first-child { grid-column: 1 / -1; }
+  }
+  .btn-more { display: inline-block; font-weight: 800; font-size: 16px; padding: 15px 24px; border-radius: 12px; }
+  .btn-more::after { content: "\2192"; display: inline-block; margin-left: 8px; transition: transform .3s ease; }
+  .btn-more:hover::after { transform: translateX(4px); }
+
+  /* Pied de page */
+  .footer-list { margin: 0; padding: 0; list-style: none; font-size: 15px; line-height: 1.7; }
+  .footer-list a { font-weight: 600; color: #5a5a5a; }
+  .footer-list a:hover { color: #2A46E0; }
+
+  /* Rien ne doit déborder en largeur (évite le défilement latéral sur mobile) */
+  main, footer { overflow-x: clip; }
+
   /* Corrections mobile */
-  @media (max-width: 600px) { .installer-line { flex-direction: column; gap: 8px; } #realisations .card img { height: auto !important; } #hero-video { object-position: 50% 0% !important; } .hero-bg { background-position: center top !important; } .brand-logo { width: 52px !important; } }
+  @media (max-width: 600px) { .installer-line { flex-direction: column; gap: 8px; } #hero-video { object-position: 50% 0% !important; } .hero-bg { background-position: center top !important; } .brand-logo { width: 52px !important; } }
   @media (max-width: 480px) { .header-tel { display: none !important; } }
   @media (max-width: 760px) { .why-intro { position: static !important; top: auto !important; } }
+  @media (max-width: 360px) { .brand-logo { width: 40px !important; } .brand-name { font-size: 12px !important; } .nav-toggle { width: 40px; } }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -187,6 +245,10 @@
           "name": "Meurthe-et-Moselle (54)"
         },
         {
+          "@type": "Country",
+          "name": "Luxembourg"
+        },
+        {
           "@type": "City",
           "name": "Metz"
         },
@@ -232,6 +294,7 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Charpente",
+            "url": "https://www.schoeffter-toiture.fr/prestations/charpente",
             "serviceType": "Charpente traditionnelle et industrielle",
             "provider": {
               "@id": "https://www.schoeffter-toiture.fr/#business"
@@ -246,6 +309,7 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Couverture",
+            "url": "https://www.schoeffter-toiture.fr/prestations/couverture",
             "serviceType": "Réfection et rénovation de toiture",
             "provider": {
               "@id": "https://www.schoeffter-toiture.fr/#business"
@@ -260,6 +324,7 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Zinguerie",
+            "url": "https://www.schoeffter-toiture.fr/prestations/zinguerie",
             "serviceType": "Gouttières, chéneaux, habillage zinc",
             "provider": {
               "@id": "https://www.schoeffter-toiture.fr/#business"
@@ -274,6 +339,7 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Démoussage et entretien de toiture",
+            "url": "https://www.schoeffter-toiture.fr/prestations/demoussage-entretien-toiture",
             "serviceType": "Nettoyage, démoussage, traitement hydrofuge",
             "provider": {
               "@id": "https://www.schoeffter-toiture.fr/#business"
@@ -288,6 +354,7 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Isolation des combles",
+            "url": "https://www.schoeffter-toiture.fr/prestations/isolation-combles",
             "serviceType": "Isolation thermique des combles",
             "provider": {
               "@id": "https://www.schoeffter-toiture.fr/#business"
@@ -302,6 +369,7 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Rénovation de combles",
+            "url": "https://www.schoeffter-toiture.fr/prestations/renovation-combles",
             "serviceType": "Aménagement et rénovation de combles",
             "provider": {
               "@id": "https://www.schoeffter-toiture.fr/#business"
@@ -316,6 +384,7 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Pose de Velux",
+            "url": "https://www.schoeffter-toiture.fr/prestations/pose-velux",
             "serviceType": "Installateur Velux, fenêtres de toit",
             "provider": {
               "@id": "https://www.schoeffter-toiture.fr/#business"
@@ -473,7 +542,7 @@
           <span style="display:flex;align-items:center;gap:clamp(18px,3vw,40px);padding-right:clamp(18px,3vw,40px);color:#FFFFFF;font-weight:900;font-size:clamp(13px,1.9vw,20px);letter-spacing:-0.01em;white-space:nowrap">Charpente<span style="opacity:.55">·</span>Couverture<span style="opacity:.55">·</span>Zinguerie<span style="opacity:.55">·</span>Entretien<span style="opacity:.55">·</span>Démoussage<span style="opacity:.55">·</span>Contrôle<span style="opacity:.55">·</span></span>
         </div>
       </div>
-        <span style="position:absolute;top:50%;right:clamp(8px,4vw,64px);transform:translateY(-50%);z-index:5;pointer-events:none"><img class="seal-stamp" src="assets/garantie-decennale-or.svg?v=3" alt="Garantie décennale sur nos travaux de couverture et de charpente" style="display:block;height:clamp(104px,17vw,184px);width:auto;border-radius:16px;transform:rotate(10deg);filter:drop-shadow(0 10px 15px rgba(0,0,0,0.3)) drop-shadow(0 3px 5px rgba(0,0,0,0.22))"></span>
+        <span style="position:absolute;top:50%;right:clamp(28px,4vw,64px);transform:translateY(-50%);z-index:5;pointer-events:none"><img class="seal-stamp" src="assets/garantie-decennale-or.svg?v=3" alt="Garantie décennale sur nos travaux de couverture et de charpente" style="display:block;height:clamp(104px,17vw,184px);width:auto;border-radius:16px;transform:rotate(10deg);filter:drop-shadow(0 10px 15px rgba(0,0,0,0.3)) drop-shadow(0 3px 5px rgba(0,0,0,0.22))"></span>
       </div>
       <div style="background:linear-gradient(180deg,#FAF4EC 0%,#FFFFFF 100%)">
         <p class="wrap installer-line" style="padding:26px clamp(20px,5vw,32px) 8px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-weight:800;font-size:clamp(16px,2.6vw,26px);color:#333333">&amp; installateur <img src="assets/logo-velux.svg" alt="Installateur Velux" width="87" height="30" style="display:block;height:clamp(26px,3.4vw,40px);width:auto"></p>
@@ -487,42 +556,63 @@
         <p class="eyebrow">Nos prestations</p>
         <h2 id="prestations-title" style="margin:0 0 12px;font-size:clamp(26px,3.6vw,40px);line-height:1.1;font-weight:900;letter-spacing:-0.02em;color:#333333">Couvreur zingueur en Moselle : tous les travaux de toiture</h2>
         <p id="definition" style="margin:0 0 32px;font-size:17px;line-height:1.6;color:#5a5a5a;max-width:62ch">La SAS Schoeffter est une entreprise de couverture basée à Metz qui intervient dans toute la Moselle (57) pour la charpente, la couverture, la zinguerie et l'entretien de toiture. De la toiture neuve à l'entretien, nous prenons en charge le chantier complet.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px">
+        <div class="svc-grid">
 
-          <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13 12 5l10 8"></path><path d="M6 21V12"></path><path d="M18 21V12"></path><path d="M12 8v13"></path><path d="M7 16h10"></path></svg></span>
-            <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Charpente</h3>
-            <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Charpente traditionnelle ou industrielle, réparation et remplacement de pièces de bois attaquées.</p>          </article>
+          <article class="card svc" style="--i:0">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M2 13 12 5l10 8"></path><path pathLength="1" d="M6 21V12"></path><path pathLength="1" d="M18 21V12"></path><path pathLength="1" d="M12 8v13"></path><path pathLength="1" d="M7 16h10"></path></svg></span>
+            <h3><a class="svc-link" href="/prestations/charpente">Charpente</a></h3>
+            <p>Charpente traditionnelle ou industrielle, réparation et remplacement de pièces de bois attaquées.</p>
+            <span class="svc-more" aria-hidden="true">En savoir plus</span>
+          </article>
 
-          <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12 12 4l10 8"></path><path d="M4 12h16"></path><path d="M5 16h14"></path><path d="M6 20h12"></path></svg></span>
-            <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Couverture</h3>
-            <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Réfection de toiture en tuiles, ardoises ou zinc. Réparation de fuite et rénovation complète.</p>          </article>
+          <article class="card svc" style="--i:1">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M2 12 12 4l10 8"></path><path pathLength="1" d="M4 12h16"></path><path pathLength="1" d="M5 16h14"></path><path pathLength="1" d="M6 20h12"></path></svg></span>
+            <h3><a class="svc-link" href="/prestations/couverture">Couverture</a></h3>
+            <p>Réfection de toiture en tuiles, ardoises ou zinc. Réparation de fuite et rénovation complète.</p>
+            <span class="svc-more" aria-hidden="true">En savoir plus</span>
+          </article>
 
-          <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"></path><path d="M3 6v4a3 3 0 0 0 3 3h12"></path><path d="M18 13v8"></path><path d="M15 21h6"></path></svg></span>
-            <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Zinguerie</h3>
-            <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Gouttières, chéneaux, noues et solins. Habillage zinc posé par un couvreur zingueur à Metz.</p>          </article>
+          <article class="card svc" style="--i:2">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M3 6h18"></path><path pathLength="1" d="M3 6v4a3 3 0 0 0 3 3h12"></path><path pathLength="1" d="M18 13v8"></path><path pathLength="1" d="M15 21h6"></path></svg></span>
+            <h3><a class="svc-link" href="/prestations/zinguerie">Zinguerie</a></h3>
+            <p>Gouttières, chéneaux, noues et solins. Habillage zinc posé par un couvreur zingueur à Metz.</p>
+            <span class="svc-more" aria-hidden="true">En savoir plus</span>
+          </article>
 
-          <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.5 4.2 5.5 7 5.5 9.4A5.5 5.5 0 0 1 12 18a5.5 5.5 0 0 1-5.5-5.6C6.5 10 8.5 7.2 12 3Z"></path><path d="M5 21h14"></path></svg></span>
-            <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Démoussage / Entretien</h3>
-            <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Nettoyage, démoussage et traitement hydrofuge pour prolonger la vie de votre toiture.</p>          </article>
+          <article class="card svc" style="--i:3">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 3c3.5 4.2 5.5 7 5.5 9.4A5.5 5.5 0 0 1 12 18a5.5 5.5 0 0 1-5.5-5.6C6.5 10 8.5 7.2 12 3Z"></path><path pathLength="1" d="M5 21h14"></path></svg></span>
+            <h3><a class="svc-link" href="/prestations/demoussage-entretien-toiture">Démoussage / Entretien</a></h3>
+            <p>Nettoyage, démoussage et traitement hydrofuge pour prolonger la vie de votre toiture.</p>
+            <span class="svc-more" aria-hidden="true">En savoir plus</span>
+          </article>
 
-          <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13 12 5l10 8"></path><path d="M4 13v8h16v-8"></path><path d="M8 21v-8"></path><path d="M16 21v-8"></path><path d="M4 17h16"></path></svg></span>
-            <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Isolation</h3>
-            <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Isolation des combles perdus ou aménagés. Moins de déperditions, plus de confort l'hiver.</p>          </article>
+          <article class="card svc" style="--i:4">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M2 13 12 5l10 8"></path><path pathLength="1" d="M4 13v8h16v-8"></path><path pathLength="1" d="M8 21v-8"></path><path pathLength="1" d="M16 21v-8"></path><path pathLength="1" d="M4 17h16"></path></svg></span>
+            <h3><a class="svc-link" href="/prestations/isolation-combles">Isolation</a></h3>
+            <p>Isolation des combles perdus ou aménagés. Moins de déperditions, plus de confort l'hiver.</p>
+            <span class="svc-more" aria-hidden="true">En savoir plus</span>
+          </article>
 
-          <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12 12 4l9 8"></path><path d="M5 12v9h14v-9"></path><path d="M10 21v-6h4v6"></path></svg></span>
-            <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Rénovation de combles</h3>
-            <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Aménagement et rénovation de combles : structure, isolation, étanchéité et éclairage naturel.</p>          </article>
+          <article class="card svc" style="--i:5">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M3 12 12 4l9 8"></path><path pathLength="1" d="M5 12v9h14v-9"></path><path pathLength="1" d="M10 21v-6h4v6"></path></svg></span>
+            <h3><a class="svc-link" href="/prestations/renovation-combles">Rénovation de combles</a></h3>
+            <p>Aménagement et rénovation de combles : structure, isolation, étanchéité et éclairage naturel.</p>
+            <span class="svc-more" aria-hidden="true">En savoir plus</span>
+          </article>
 
-          <article class="card" style="background:#FFFFFF;border:1px solid #e8e2d8;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;background:#FAF4EC;color:#2A46E0"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12 12 4l9 8"></path><path d="M7 21V13h10v8Z"></path><path d="M12 13v8"></path><path d="M7 17h10"></path></svg></span>
-            <h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-0.01em;color:#333333">Pose de Velux</h3>
-            <p style="margin:0;font-size:15.5px;line-height:1.55;color:#5a5a5a;flex:1">Installateur Velux : pose et remplacement de fenêtres de toit, volets et stores, étanchéité garantie.</p>          </article>
+          <article class="card svc" style="--i:6">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M3 12 12 4l9 8"></path><path pathLength="1" d="M7 21V13h10v8Z"></path><path pathLength="1" d="M12 13v8"></path><path pathLength="1" d="M7 17h10"></path></svg></span>
+            <h3><a class="svc-link" href="/prestations/pose-velux">Pose de Velux</a></h3>
+            <p>Installateur Velux : pose et remplacement de fenêtres de toit, volets et stores, étanchéité garantie.</p>
+            <span class="svc-more" aria-hidden="true">En savoir plus</span>
+          </article>
+
+          <article class="card svc svc-urgence" style="--i:7">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
+            <h3><a class="svc-link" href="tel:+33354730645" aria-label="Urgence fuite : appeler le 03 54 73 06 45">Urgence fuite</a></h3>
+            <p>Tuiles envolées, infiltration : une intervention est possible le jour même.</p>
+            <span class="svc-more" aria-hidden="true">03 54 73 06 45</span>
+          </article>
 
         </div>
 
@@ -537,40 +627,41 @@
       <div class="wrap" style="padding:clamp(56px,8vw,88px) clamp(20px,5vw,32px)">
         <p class="eyebrow">Nos réalisations</p>
         <h2 id="realisations-title" style="margin:0 0 12px;font-size:clamp(26px,3.6vw,40px);line-height:1.1;font-weight:900;letter-spacing:-0.02em;color:#333333">Nos chantiers de couverture en Moselle</h2>
-        <p style="margin:0 0 8px;font-size:17px;line-height:1.6;color:#5a5a5a;max-width:62ch">Charpente, couverture et zinguerie réalisées par la SAS Schoeffter à Metz et dans toute la Moselle.</p>
-        <div class="hscroll" style="display:flex;gap:16px;margin-top:24px;overflow-x:auto;padding-bottom:12px;-webkit-overflow-scrolling:touch">
-          <figure class="card" style="flex:0 0 clamp(280px,80vw,440px);scroll-snap-align:start;margin:0;border-radius:14px;overflow:hidden;border:1px solid #e8e2d8;background:#FFFFFF;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/chantier-refection-toiture-saulny.jpg" alt="Réfection complète de toiture en terre cuite à Saulny, avant-après, par la SAS Schoeffter" loading="lazy" width="1400" height="812" style="display:block;width:100%;height:260px;object-fit:cover">
-            <figcaption style="padding:14px 16px;font-size:14.5px;font-weight:700;color:#333333">Réfection complète de toiture terre cuite · Saulny</figcaption>
+        <p style="margin:0 0 8px;font-size:17px;line-height:1.6;color:#5a5a5a;max-width:62ch">Charpente, couverture et zinguerie réalisées par la SAS Schoeffter à Metz et dans toute la Moselle. Faites glisser le curseur pour comparer l'avant et l'après.</p>
+        <div class="gallery gallery-home">
+          <figure class="card g-card">
+            <div class="g-media ba" style="--pos:50%">
+              <img src="/assets/chantier-ba-saulny-apres.jpg" alt="Toiture à Saulny après réfection complète en tuiles terre cuite par la SAS Schoeffter" loading="lazy" width="700" height="700" draggable="false">
+              <img class="ba-before" src="/assets/chantier-ba-saulny-avant.jpg" alt="Toiture à Saulny avant réfection, anciennes tuiles sombres" loading="lazy" width="700" height="700" draggable="false">
+              <span class="ba-tag ba-tag-l" aria-hidden="true">Avant</span><span class="ba-tag ba-tag-r" aria-hidden="true">Après</span>
+              <span class="ba-line" aria-hidden="true"></span><span class="ba-knob" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparer avant et après : Réfection complète de toiture terre cuite · Saulny">
+            </div>
+            <figcaption>Réfection complète de toiture terre cuite · Saulny</figcaption>
           </figure>
-          <figure class="card" style="flex:0 0 clamp(280px,80vw,440px);scroll-snap-align:start;margin:0;border-radius:14px;overflow:hidden;border:1px solid #e8e2d8;background:#FFFFFF;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/chantier-demoussage-tuiles-woippy.jpg" alt="Démoussage de tuiles béton à Woippy, avant-après, par la SAS Schoeffter" loading="lazy" width="1200" height="710" style="display:block;width:100%;height:260px;object-fit:cover">
-            <figcaption style="padding:14px 16px;font-size:14.5px;font-weight:700;color:#333333">Démoussage de tuiles béton · Woippy</figcaption>
+          <figure class="card g-card">
+            <div class="g-media ba" style="--pos:50%">
+              <img src="/assets/chantier-ba-longeville-apres.jpg" alt="Joue de lucarne à Longeville-lès-Metz après habillage en zinc par la SAS Schoeffter" loading="lazy" width="700" height="700" draggable="false">
+              <img class="ba-before" src="/assets/chantier-ba-longeville-avant.jpg" alt="Joue de lucarne à Longeville-lès-Metz avant travaux, ardoises abîmées" loading="lazy" width="700" height="700" draggable="false">
+              <span class="ba-tag ba-tag-l" aria-hidden="true">Avant</span><span class="ba-tag ba-tag-r" aria-hidden="true">Après</span>
+              <span class="ba-line" aria-hidden="true"></span><span class="ba-knob" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparer avant et après : Habillage de joue de lucarne en zinc · Longeville-lès-Metz">
+            </div>
+            <figcaption>Habillage de joue de lucarne en zinc · Longeville-lès-Metz</figcaption>
           </figure>
-          <figure class="card" style="flex:0 0 clamp(280px,80vw,440px);scroll-snap-align:start;margin:0;border-radius:14px;overflow:hidden;border:1px solid #e8e2d8;background:#FFFFFF;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/chantier-pose-velux-marly.jpg" alt="Pose de fenêtres de toit Velux à Marly par la SAS Schoeffter" loading="lazy" width="1200" height="710" style="display:block;width:100%;height:260px;object-fit:cover">
-            <figcaption style="padding:14px 16px;font-size:14.5px;font-weight:700;color:#333333">Pose de Velux · Marly</figcaption>
+          <figure class="card g-card">
+            <div class="g-media ba" style="--pos:50%">
+              <img src="/assets/chantier-ba-marly-apres.jpg" alt="Cheminée à Marly après habillage par la SAS Schoeffter" loading="lazy" width="700" height="700" draggable="false">
+              <img class="ba-before" src="/assets/chantier-ba-marly-avant.jpg" alt="Cheminée à Marly avant habillage, enduit abîmé" loading="lazy" width="700" height="700" draggable="false">
+              <span class="ba-tag ba-tag-l" aria-hidden="true">Avant</span><span class="ba-tag ba-tag-r" aria-hidden="true">Après</span>
+              <span class="ba-line" aria-hidden="true"></span><span class="ba-knob" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparer avant et après : Habillage de cheminée · Marly">
+            </div>
+            <figcaption>Habillage de cheminée · Marly</figcaption>
           </figure>
-          <figure class="card" style="flex:0 0 clamp(280px,80vw,440px);scroll-snap-align:start;margin:0;border-radius:14px;overflow:hidden;border:1px solid #e8e2d8;background:#FFFFFF;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/chantier-habillage-cheminee-marly.jpg" alt="Habillage de cheminée à Marly, avant-après, par la SAS Schoeffter" loading="lazy" width="1400" height="812" style="display:block;width:100%;height:260px;object-fit:cover">
-            <figcaption style="padding:14px 16px;font-size:14.5px;font-weight:700;color:#333333">Habillage de cheminée · Marly</figcaption>
-          </figure>
-          <figure class="card" style="flex:0 0 clamp(280px,80vw,440px);scroll-snap-align:start;margin:0;border-radius:14px;overflow:hidden;border:1px solid #e8e2d8;background:#FFFFFF;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/chantier-pose-velux-retonfey.jpg" alt="Pose de Velux sur toiture zinc à Retonfey par la SAS Schoeffter" loading="lazy" width="1200" height="710" style="display:block;width:100%;height:260px;object-fit:cover">
-            <figcaption style="padding:14px 16px;font-size:14.5px;font-weight:700;color:#333333">Pose de Velux · Retonfey</figcaption>
-          </figure>
-          <figure class="card" style="flex:0 0 clamp(280px,80vw,440px);scroll-snap-align:start;margin:0;border-radius:14px;overflow:hidden;border:1px solid #e8e2d8;background:#FFFFFF;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/chantier-habillage-cheminee-ottange.jpg" alt="Habillage de cheminée à Ottange, avant-après, par la SAS Schoeffter" loading="lazy" width="1400" height="812" style="display:block;width:100%;height:260px;object-fit:cover">
-            <figcaption style="padding:14px 16px;font-size:14.5px;font-weight:700;color:#333333">Habillage de cheminée · Ottange</figcaption>
-          </figure>
-          <figure class="card" style="flex:0 0 clamp(280px,80vw,440px);scroll-snap-align:start;margin:0;border-radius:14px;overflow:hidden;border:1px solid #e8e2d8;background:#FFFFFF;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/chantier-charpente-ferme-lorry-les-metz.jpg" alt="Changement de ferme de charpente à Lorry-lès-Metz par la SAS Schoeffter" loading="lazy" width="1200" height="710" style="display:block;width:100%;height:260px;object-fit:cover">
-            <figcaption style="padding:14px 16px;font-size:14.5px;font-weight:700;color:#333333">Changement de ferme de charpente · Lorry-lès-Metz</figcaption>
-          </figure>
-          <figure class="card" style="flex:0 0 clamp(280px,80vw,440px);scroll-snap-align:start;margin:0;border-radius:14px;overflow:hidden;border:1px solid #e8e2d8;background:#FFFFFF;box-shadow:0 2px 10px rgba(51,51,51,0.05)">
-            <img src="assets/chantier-habillage-joue-lucarne-zinc-longeville.jpg" alt="Habillage de joue de lucarne en zinc à Longeville-lès-Metz, avant-après, par la SAS Schoeffter" loading="lazy" width="1400" height="812" style="display:block;width:100%;height:260px;object-fit:cover">
-            <figcaption style="padding:14px 16px;font-size:14.5px;font-weight:700;color:#333333">Habillage de joue de lucarne en zinc · Longeville-lès-Metz</figcaption>
-          </figure>
+        </div>
+        <div style="margin-top:30px;text-align:center">
+          <a class="btn-outline btn-more" href="/realisations">Voir tous nos chantiers</a>
         </div>
       </div>
     </section>
@@ -844,10 +935,23 @@
   </main>
 
   <footer style="background:#FAF4EC;border-top:1px solid #eae3d7">
-    <div class="wrap" style="padding:clamp(44px,6vw,60px) clamp(20px,5vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px">
+    <div class="wrap" style="padding:clamp(44px,6vw,60px) clamp(20px,5vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px">
       <div>
         <p style="margin:0 0 10px;font-weight:900;font-size:20px;letter-spacing:-0.02em;color:#333333;font-family:'Freeroad',Archivo,Helvetica,sans-serif">SAS SCHOEFFTER</p>
         <p style="margin:0;font-size:15px;line-height:1.7;color:#5a5a5a">Charpente · Couverture · Zinguerie · Entretien ·&nbsp;Installateur Velux</p>
+        <p style="margin:12px 0 0;font-size:15px"><a href="/realisations" style="font-weight:800">Voir nos chantiers →</a></p>
+      </div>
+      <div>
+        <p style="margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#2A46E0">Prestations</p>
+        <ul class="footer-list">
+          <li><a href="/prestations/charpente">Charpente</a></li>
+          <li><a href="/prestations/couverture">Couverture</a></li>
+          <li><a href="/prestations/zinguerie">Zinguerie</a></li>
+          <li><a href="/prestations/demoussage-entretien-toiture">Démoussage et entretien</a></li>
+          <li><a href="/prestations/isolation-combles">Isolation des combles</a></li>
+          <li><a href="/prestations/renovation-combles">Rénovation de combles</a></li>
+          <li><a href="/prestations/pose-velux">Pose de Velux</a></li>
+        </ul>
       </div>
       <div>
         <p style="margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#2A46E0">Coordonnées</p>
@@ -855,7 +959,7 @@
       </div>
       <div>
         <p style="margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#2A46E0">Horaires &amp; zone</p>
-        <p style="margin:0;font-size:15px;line-height:1.7;color:#5a5a5a">Lundi au samedi, 7h-19h<br>Toute la Moselle (57)</p>
+        <p style="margin:0;font-size:15px;line-height:1.7;color:#5a5a5a">Lundi au samedi, 7h-19h<br>Moselle, Meurthe-et-Moselle<br>et Luxembourg</p>
       </div>
       <div>
         <p style="margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#2A46E0">Informations</p>
@@ -901,6 +1005,31 @@
       sio.observe(seal);
     }
   }
+
+  // Prestations : cartes en cascade et pictos qui se dessinent, une seule fois, à l'arrivée dans l'écran
+  var svcGrid = document.querySelector('.svc-grid');
+  if (svcGrid && !reduceMotion && 'IntersectionObserver' in window && svcGrid.getBoundingClientRect().top > window.innerHeight) {
+    svcGrid.classList.add('anim');
+    var svcIo = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      svcIo.disconnect();
+      svcGrid.classList.add('in');
+      setTimeout(function () { svcGrid.classList.remove('anim', 'in'); }, 2000);
+    }, { threshold: 0.15 });
+    svcIo.observe(svcGrid);
+  }
+
+  // Formulaire : prestation pré-sélectionnée quand on arrive depuis une page prestation
+  try {
+    var prestaChoisie = sessionStorage.getItem('schoeffter-prestation');
+    if (prestaChoisie) {
+      sessionStorage.removeItem('schoeffter-prestation');
+      var prestaSelect = document.querySelector('#devis-form select[name="prestation"]');
+      for (var pi = 0; prestaSelect && pi < prestaSelect.options.length; pi++) {
+        if (prestaSelect.options[pi].text === prestaChoisie) { prestaSelect.selectedIndex = pi; break; }
+      }
+    }
+  } catch (e) {}
 
   // Défilement automatique lent des carrousels (indique qu'on peut scroller)
   var carousels = document.querySelectorAll('.hscroll');
@@ -970,5 +1099,6 @@
       .finally(function () { btn.disabled = false; });
   });
 </script>
+<script src="/assets/avant-apres.js" defer></script>
 </body>
 </html>

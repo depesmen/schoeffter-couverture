@@ -64,4 +64,54 @@ article li { font-size:16.5px; line-height:1.7; color:#3f3f3f; margin:0 0 8px; }
 .site-footer .inner { max-width:1180px; margin:0 auto; padding:28px clamp(20px,5vw,32px); font-size:14px; color:var(--muted); line-height:1.7; }
 .site-footer .brandline { font-weight:900; font-size:18px; color:var(--ink); font-family:'Freeroad',Archivo,Helvetica,sans-serif; margin:0 0 6px; }
 .site-footer a { font-weight:700; }
+.site-footer .footer-services a { font-weight:600; }
+
+/* ===== Pages prestations ===== */
+.eyebrow { margin:16px 0 0; font-size:12.5px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); }
+.eyebrow + h1 { margin-top:8px; }
+article .keypoints { list-style:none; margin:14px 0 22px; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
+article .keypoints li { margin:0; font-size:13.5px; font-weight:700; line-height:1.2; color:var(--ink); background:var(--cream); border:1px solid #eae3d7; border-radius:999px; padding:8px 12px; }
+.cta-row { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 28px; }
+.cta-row .btn { font-size:16px; padding:14px 20px; }
+.btn-ghost { display:inline-block; font-weight:800; font-size:16px; color:var(--ink); background:#fff; border:1.5px solid #d9d2c6; padding:13px 20px; border-radius:10px; white-space:nowrap; transition:border-color .2s ease; }
+.btn-ghost:hover { border-color:var(--ink); color:var(--ink); text-decoration:none; }
+@media (max-width:480px) { .cta-row .btn, .cta-row .btn-ghost { flex:1 1 100%; text-align:center; } }
+.svc-figure { margin:0 0 30px; }
+/* Filtre esthétique commun à toutes les photos de chantiers */
+.svc-figure img { display:block; width:100%; height:auto; border-radius:16px; filter:saturate(1.12) contrast(1.08) brightness(1.02); }
+.svc-figure figcaption { margin-top:8px; font-size:13.5px; line-height:1.5; color:#8a8a8a; }
+.svc-figure figcaption a { font-weight:700; }
+article .checklist { list-style:none; padding:0; margin:0 0 18px; }
+article .checklist li { position:relative; padding-left:32px; }
+article .checklist li::before { content:""; position:absolute; left:0; top:4px; width:21px; height:21px; border-radius:6px; background:var(--cream) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232A46E0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/13px no-repeat; border:1px solid #eae3d7; }
+article .steps { list-style:none; padding:0; margin:6px 0 18px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr)); gap:12px; counter-reset:etape; }
+article .steps li { counter-increment:etape; margin:0; background:#fff; border:1px solid #e8e2d8; border-radius:14px; padding:16px 16px 15px; font-size:14.5px; line-height:1.5; color:var(--muted); }
+article .steps li::before { content:counter(etape, decimal-leading-zero); display:block; font-size:12.5px; font-weight:800; letter-spacing:0.08em; color:var(--blue); margin-bottom:6px; }
+article .steps strong { display:block; font-size:16px; color:var(--ink); margin-bottom:4px; }
+.quote { margin:28px 0; padding:20px 22px; background:#fff; border:1px solid #e8e2d8; border-radius:14px; box-shadow:0 2px 10px rgba(51,51,51,0.05); }
+article .quote .stars { margin:0 0 8px; color:#f5a623; letter-spacing:2px; font-size:15px; }
+.quote blockquote { margin:0 0 10px; font-size:16.5px; line-height:1.6; color:var(--ink); }
+.quote figcaption { font-size:14px; font-weight:800; color:var(--ink); }
+.quote figcaption span { font-weight:500; color:#8a8a8a; }
+.duo { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:14px; margin:4px 0 30px; }
+.duo-card { background:var(--cream); border:1px solid #eae3d7; border-radius:14px; padding:18px 20px; }
+.duo-icon { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:10px; background:#fff; color:var(--blue); }
+article .duo-card h3 { margin:12px 0 6px; }
+article .duo-card p { margin:0; font-size:15.5px; line-height:1.6; }
+.svc-others { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr)); gap:10px; margin-top:6px; }
+.svc-other { display:flex; align-items:center; gap:12px; padding:11px 14px; background:#fff; border:1px solid #e8e2d8; border-radius:12px; color:var(--ink); font-weight:800; font-size:15px; transition:border-color .2s ease, transform .2s ease; }
+.svc-other:hover { border-color:var(--blue); color:var(--ink); text-decoration:none; transform:translateY(-2px); }
+.svc-other .ico { flex:none; display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:9px; background:var(--cream); color:var(--blue); }
+.svc-other .arrow { margin-left:auto; color:var(--blue); }
+
+/* ===== Page Nos chantiers ===== */
+.wrap-wide { max-width:1180px; margin:0 auto; padding:0 clamp(20px,5vw,32px); }
+.gallery-page .lead { max-width:62ch; }
+
+/* Rien ne doit déborder en largeur (évite le défilement latéral sur mobile) */
+main, .site-footer { overflow-x:clip; }
+@media (max-width:360px) {
+  .site-header .bar { gap:8px; padding-left:12px; padding-right:12px; }
+  .site-header .btn { font-size:14px; padding:9px 12px; }
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
