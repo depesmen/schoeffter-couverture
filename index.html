@@ -1050,18 +1050,27 @@
   var carousels = document.querySelectorAll('.hscroll');
   if (carousels.length && !reduceMotion) {
     carousels.forEach(function (c) {
-      var paused = false, resumeT, dir = 1, visible = false;
-      function pause() { paused = true; clearTimeout(resumeT); resumeT = setTimeout(function () { paused = false; }, 3000); }
+      // position gardée en décimal : sur mobile, scrollLeft est arrondi et un pas de 0,4 px restait bloqué à 0
+      var paused = false, resumeT, dir = 1, visible = false, pos = c.scrollLeft, last = null, setByUs = -1;
+      var SPEED = 28; // px par seconde
+      var dpr = window.devicePixelRatio || 1;
+      function pause() { paused = true; clearTimeout(resumeT); resumeT = setTimeout(function () { paused = false; pos = c.scrollLeft; }, 3000); }
       ['pointerdown', 'wheel', 'touchstart', 'mouseenter'].forEach(function (ev) { c.addEventListener(ev, pause, { passive: true }); });
+      c.addEventListener('scroll', function () {
+        if (Math.abs(c.scrollLeft - setByUs) > 2) { pos = c.scrollLeft; pause(); } // défilement fait par le visiteur
+      }, { passive: true });
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(function (es) { es.forEach(function (e) { visible = e.isIntersecting; }); }, { threshold: 0.15 }).observe(c);
       } else { visible = true; }
-      function step() {
+      function step(t) {
+        var dt = last === null ? 0 : Math.min(0.1, (t - last) / 1000); last = t;
         var max = c.scrollWidth - c.clientWidth;
         if (!paused && visible && max > 4) {
-          c.scrollLeft += 0.4 * dir;
-          if (c.scrollLeft >= max - 1) dir = -1;
-          else if (c.scrollLeft <= 0) dir = 1;
+          pos += SPEED * dt * dir;
+          if (pos >= max) { pos = max; dir = -1; }
+          else if (pos <= 0) { pos = 0; dir = 1; }
+          setByUs = Math.round(pos * dpr) / dpr;
+          c.scrollLeft = setByUs;
         }
         requestAnimationFrame(step);
       }
