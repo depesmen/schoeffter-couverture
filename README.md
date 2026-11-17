@@ -1,7 +1,7 @@
 # SAS Schoeffter — Site vitrine
 
 Site vitrine one-page de la **SAS Schoeffter**, couvreur à Metz et en Moselle
-(charpente, couverture, zinguerie, entretien, installateur Velux).
+(charpente, couverture, zinguerie, entretien, installateur VELUX).
 
 Site statique (HTML/CSS/JS), sans étape de build.
 
