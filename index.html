@@ -28,6 +28,8 @@
 <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
 <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="/assets/hero-cheminee-ottange.webp" type="image/webp">
+<link rel="preload" as="image" href="/assets/hero-ciel-ottange.jpg">
 <link rel="stylesheet" href="/assets/avant-apres.css">
 <style>
   html { scroll-behavior: smooth; }
@@ -55,6 +57,13 @@
   .card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(51,51,51,0.12); }
   .service-cta { color: #2A46E0; transition: background .2s ease, color .2s ease; }
   .service-cta:hover { background: #2A46E0; color: #FFFFFF; text-decoration: none; }
+  /* Header : cheminée d'Ottange en deux calques (ciel qui dérive, maison qui avance lentement) */
+  .hero-layer { position:absolute; inset:0; background-repeat:no-repeat; background-size:cover; background-position:100% 30%; will-change:transform; }
+  .hero-ciel { background-image:url('/assets/hero-ciel-ottange.jpg'); transform:scale(1.06); animation:heroCiel 24s ease-in-out infinite alternate; }
+  .hero-maison { background-image:url('/assets/hero-cheminee-ottange.webp'); transform-origin:84% 100%; animation:heroMaison 24s ease-in-out infinite alternate; }
+  @keyframes heroCiel { from { transform:scale(1.06) translateX(1.6%); } to { transform:scale(1.06) translateX(-1.6%); } }
+  @keyframes heroMaison { from { transform:scale(1); } to { transform:scale(1.045); } }
+  @media (prefers-reduced-motion: reduce) { .hero-layer { animation:none; } }
   .review-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(51,51,51,0.1); }
   /* Avis : grille sur ordinateur, carrousel horizontal sur mobile (comme le blog) */
   .reviews { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
@@ -181,7 +190,7 @@
   main, footer { overflow-x: clip; }
 
   /* Corrections mobile */
-  @media (max-width: 600px) { .installer-line { flex-direction: column; gap: 8px; } #hero-video { object-position: 50% 0% !important; } .hero-bg { background-position: center top !important; } .brand-logo { width: 52px !important; } }
+  @media (max-width: 600px) { .installer-line { flex-direction: column; gap: 8px; } .brand-logo { width: 52px !important; } }
   @media (max-width: 480px) { .header-tel { display: none !important; } }
   @media (max-width: 760px) { .why-intro { position: static !important; top: auto !important; } }
   @media (max-width: 360px) { .brand-logo { width: 40px !important; } .brand-name { font-size: 12px !important; } .nav-toggle { width: 40px; } }
@@ -523,8 +532,9 @@
   <main id="top">
 
     <section aria-labelledby="hero-title" style="position:relative;background:#FAF4EC;overflow:hidden;isolation:isolate">
-      <div class="hero-bg" aria-hidden="true" style="position:absolute;inset:0;background:#efe7da center/cover no-repeat url('assets/hero-couverture-metz.jpg')">
-        <video id="hero-video" muted loop playsinline preload="none" poster="assets/hero-couverture-metz.jpg" data-src="assets/couvreur-metz-video.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%"></video>
+      <div class="hero-bg" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;background:#c4d6ee">
+        <div class="hero-layer hero-ciel"></div>
+        <div class="hero-layer hero-maison"></div>
       </div>
       <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(250,244,236,0.97) 0%,rgba(250,244,236,0.92) 40%,rgba(250,244,236,0.55) 70%,rgba(250,244,236,0.15) 100%)"></div>
       <div class="wrap" style="position:relative;padding:clamp(60px,9vw,110px) clamp(20px,5vw,32px);min-height:clamp(460px,64vh,720px);display:flex;flex-direction:column;justify-content:center">
@@ -980,18 +990,6 @@
 
 <script>
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Vidéo hero chargée uniquement sur desktop (mobile = photo poster, économise ~6,5 Mo)
-  var heroVideo = document.getElementById('hero-video');
-  if (heroVideo && !reduceMotion && window.innerWidth >= 768) {
-    var vsrc = document.createElement('source');
-    vsrc.src = heroVideo.getAttribute('data-src');
-    vsrc.type = 'video/mp4';
-    heroVideo.appendChild(vsrc);
-    heroVideo.load();
-    heroVideo.addEventListener('canplay', function () { heroVideo.play().catch(function () {}); }, { once: true });
-    heroVideo.play().catch(function () {});
-  }
-
   var revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length && 'IntersectionObserver' in window && !reduceMotion) {
     var io = new IntersectionObserver(function (entries) {
