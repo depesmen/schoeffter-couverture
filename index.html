@@ -529,10 +529,10 @@
   <main id="top">
 
     <section aria-labelledby="hero-title" style="position:relative;background:#FAF4EC;overflow:hidden;isolation:isolate">
-      <div class="hero-bg" aria-hidden="true" style="position:absolute;inset:0;background:#c4d6ee center/cover no-repeat url('assets/hero-ottange-poster.jpg')">
-        <video id="hero-video" muted loop playsinline preload="none" poster="assets/hero-ottange-poster.jpg" data-src="assets/couvreur-metz-toiture-ottange.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%"></video>
+      <div class="hero-bg" aria-hidden="true" style="position:absolute;inset:0;background:#c4d6ee center/cover no-repeat url('assets/hero-tuiles-pluie-poster.jpg')">
+        <video id="hero-video" muted loop playsinline preload="none" poster="assets/hero-tuiles-pluie-poster.jpg" data-src="assets/couvreur-toiture-tuiles-pluie.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%"></video>
       </div>
-      <div class="hero-veil" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(250,244,236,0.96) 0%,rgba(250,244,236,0.9) 30%,rgba(250,244,236,0.6) 42%,rgba(250,244,236,0.12) 54%,rgba(250,244,236,0) 72%)"></div>
+      <div class="hero-veil" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(250,244,236,0.96) 0%,rgba(250,244,236,0.9) 38%,rgba(250,244,236,0.5) 62%,rgba(250,244,236,0.12) 100%)"></div>
       <div class="wrap" style="position:relative;padding:clamp(60px,9vw,110px) clamp(20px,5vw,32px);min-height:clamp(460px,64vh,720px);display:flex;flex-direction:column;justify-content:center">
         <div style="max-width:min(100%,52ch)">
           <p style="margin:0 0 14px;font-size:13px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#2A46E0">Votre artisan couvreur de proximité</p>
@@ -986,7 +986,7 @@
 
 <script>
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Vidéo du header (travelling Blender sur la toiture d'Ottange) chargée uniquement sur ordinateur ; mobile = image fixe
+  // Vidéo du header (tuiles sous la pluie, Pexels) chargée uniquement sur ordinateur ; mobile = image fixe
   var heroVideo = document.getElementById('hero-video');
   if (heroVideo && !reduceMotion && window.innerWidth >= 768) {
     var vsrc = document.createElement('source');
