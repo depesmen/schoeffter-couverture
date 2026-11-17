@@ -103,7 +103,7 @@
 
   /* Sceau garantie décennale : effet tampon / étiquette qui se colle */
   @keyframes stamp { 0% { opacity: 0; transform: translateY(10px) scale(0.86); } 100% { opacity: 1; transform: none; } }
-  @keyframes sealSpin { to { transform: rotate(360deg); } }
+  @keyframes sealSpin { to { transform: rotate(-360deg); } }
   .seal-stamp { opacity: 0; }
   .seal-stamp.is-stamped { animation: stamp .7s cubic-bezier(.2,.8,.3,1.1) both; }
   .seal-ring { transform-box: view-box; transform-origin: 70px 70px; animation: sealSpin 24s linear infinite; }
