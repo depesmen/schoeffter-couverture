@@ -127,3 +127,4 @@ main, .site-footer { overflow-x:clip; }
   .site-header .btn { font-size:14px; padding:9px 12px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
+.more-card-icon { display:flex; align-items:center; justify-content:center; height:150px; background:var(--blue); color:#fff; }
