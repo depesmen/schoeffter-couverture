@@ -24,15 +24,16 @@ Informations clés :
 ## Prestations
 
 - [Charpente](https://www.schoeffter-toiture.fr/prestations/charpente) : réparation et remplacement de charpente, changement de ferme, charpente traditionnelle ou industrielle
-- [Couverture et réfection de toiture](https://www.schoeffter-toiture.fr/prestations/couverture) : tuiles, ardoises, zinc, réparation de fuite, intervention d'urgence
-- [Zinguerie](https://www.schoeffter-toiture.fr/prestations/zinguerie) : gouttières, caissons, noues, solins, habillages en zinc ou aluminium thermolaqué
-- [Démoussage et entretien de toiture](https://www.schoeffter-toiture.fr/prestations/demoussage-entretien-toiture) : démoussage à la main sans haute pression, traitement hydrofuge, nettoyage des gouttières
+- [Rénovation et réparation de toiture](https://www.schoeffter-toiture.fr/prestations/couverture) : réfection en tuiles, ardoises ou zinc, réparation de fuite, intervention d'urgence
+- [Zinguerie, couvreur zingueur](https://www.schoeffter-toiture.fr/prestations/zinguerie) : gouttières, caissons, noues, solins, habillages et entourages de cheminée en zinc ou aluminium thermolaqué
+- [Démoussage et nettoyage de toiture](https://www.schoeffter-toiture.fr/prestations/demoussage-entretien-toiture) : démoussage et nettoyage à la main sans haute pression, traitement hydrofuge, nettoyage des gouttières
 - [Isolation des combles](https://www.schoeffter-toiture.fr/prestations/isolation-combles) : combles perdus ou aménagés, toiture vérifiée avant d'isoler
 - [Rénovation de combles](https://www.schoeffter-toiture.fr/prestations/renovation-combles) : structure, isolation, étanchéité et fenêtres de toit
-- [Pose de VELUX](https://www.schoeffter-toiture.fr/prestations/pose-velux) : création et remplacement de fenêtres de toit, pose de volets et stores, sur tuiles, ardoises ou zinc
+- [Pose et changement de VELUX](https://www.schoeffter-toiture.fr/prestations/pose-velux) : création, changement et réparation de fenêtres de toit, pose de volets et stores, sur tuiles, ardoises, zinc ou bac acier
 
 ## Conseils toiture (blog)
 
+- [Fuite de toiture : que faire et qui appeler ?](https://www.schoeffter-toiture.fr/blog/fuite-toiture-que-faire) : bons gestes en cas de fuite, déclaration à l'assurance, qui contacter (couvreur, propriétaire, syndic)
 - [Démoussage de toiture : la méthode manuelle qui préserve vos tuiles](https://www.schoeffter-toiture.fr/blog/demoussage-toiture-methode-professionnelle) : pourquoi éviter la haute pression, démoussage à la main et traitement hydrofuge
 - [Entretenir sa toiture en Moselle : mousse, gel et climat lorrain](https://www.schoeffter-toiture.fr/blog/entretien-toiture-climat-lorrain) : effets du gel, points à vérifier avant l'hiver, fréquence d'entretien
 - [Habillages, planches de rive et cheminées](https://www.schoeffter-toiture.fr/blog/habillages-cheminees-planches-toiture) : zinc ou aluminium, habillage de cheminée, démolition de souche
